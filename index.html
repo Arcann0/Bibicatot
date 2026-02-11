@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For my Baby 💖</title>
+
+<style>
+body {
+    background: linear-gradient(to bottom right, #ffc0e6, #ffe6f2);
+    font-family: "Comic Sans MS", cursive;
+    text-align: center;
+    padding-top: 80px;
+    margin: 0;
+    transition: 0.5s;
+}
+
+h1 {
+    color: #ff1493;
+    font-size: 40px;
+}
+
+p {
+    font-size: 20px;
+    color: #d63384;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background-color: hotpink;
+    color: white;
+}
+
+#noBtn {
+    background-color: white;
+    color: hotpink;
+}
+
+img {
+    width: 220px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="title">Hi Baby 💖</h1>
+
+<p id="message">
+You like pink… so I made this EXTRA pink 🌸<br><br>
+And lilies because you're literally one 🌺<br><br>
+Will you be my Valentine, baby? 💕
+</p>
+
+<img id="catImage" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+
+<br>
+
+<button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+<button id="noBtn" onclick="noClicked()">No 🙄</button>
+
+<!-- Soft background music -->
+<audio id="bgMusic" loop>
+  <source src="yourreality.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Happy Doki Doki music -->
+<audio id="happyMusic" 
+  <src="doki.mp3"></audio>
+</audio>
+
+<script>
+let noCount = 0;
+
+const sadCats = [
+    "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
+    "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+    "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif"
+];
+
+const sadMessages = [
+    "Baby… are you sure? 🥺",
+    "That hurt a little 😿",
+    "You’re breaking my tiny cat heart 💔"
+];
+
+function noClicked() {
+    if (noCount < sadCats.length) {
+        document.getElementById("catImage").src = sadCats[noCount];
+        document.getElementById("message").innerHTML = sadMessages[noCount];
+        noCount++;
+    } else {
+        document.getElementById("catImage").remove();
+        document.getElementById("message").innerHTML =
+        "…The cat left because baby kept saying no 😔";
+        document.getElementById("noBtn").style.display = "none";
+    }
+}
+
+function yesClicked() {
+    // Stop sad music
+    const bg = document.getElementById("bgMusic");
+    bg.pause();
+    bg.currentTime = 0;
+
+    // Play happy doki music
+    const happy = document.getElementById("happyMusic");
+    happy.volume = 0.5;
+    happy.play();
+
+    document.body.innerHTML = `
+    <h1 style="color:#ff1493;">YAY BABY SAID YES 💖🌸</h1>
+    <p style="font-size:22px;">
+    You just made me the happiest person alive 🥹<br><br>
+    I can't wait to spend Valentine's with you, baby 🌺💕<br><br>
+    You're my favorite person.
+    </p>
+    <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif">
+    `;
+}
+
+window.addEventListener("click", function() {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.15;
+    music.play();
+}, { once: true });
+</script>
+
+</body>
+</html>
